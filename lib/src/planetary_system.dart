@@ -1,5 +1,5 @@
-import 'planet.dart';
 import 'dart:math';
+import 'planet.dart';
 
 class PlanetarySystem {
 
@@ -15,6 +15,15 @@ class PlanetarySystem {
   Planet randomPlanet() {
     if (!hasPlanets) return Planet.nullPlanet();
     return planets[_random.nextInt(planets.length)];
-  } 
+  }
+
+  Planet planetWithName(String name) {
+    return planets.firstWhere(
+      (planet) {
+        return planet.name == name;
+      },
+      orElse: () => Planet.nullPlanet()
+    );
+  }
 
 }
