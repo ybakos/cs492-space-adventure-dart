@@ -7,7 +7,19 @@ class PlanetarySystem {
   final List<Planet> planets;
   final _random = Random();
 
-  PlanetarySystem({this.name = "Unnamed System", this.planets = const[]});
+  PlanetarySystem({this.name = 'Unnamed System', this.planets = const[]});
+
+  /// Transform the Map
+  /// ```dart
+  /// { "name": "Foo", "planets": [{"name": "Bar", "description": "Baz"}, ...] }
+  /// ```
+  /// into a [PlanetarySystem].
+  static PlanetarySystem fromMap(Map<String,dynamic> jsonMap) {
+    return PlanetarySystem(
+      name: jsonMap['name'],
+      planets: Planet.fromMaps(jsonMap['planets'])
+    );
+  }
 
   int get numberOfPlanets => planets.length;
   bool get hasPlanets => planets.isNotEmpty;
