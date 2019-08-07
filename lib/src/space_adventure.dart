@@ -49,6 +49,7 @@ class SpaceAdventure {
         print('Sorry, I didn\'t get that.');
       }
     }
+    return false;
   }
 
   void travel(bool randomDestination) {
